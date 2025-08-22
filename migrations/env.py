@@ -3,11 +3,15 @@ from sqlalchemy import engine_from_config, pool
 from alembic import context
 from app.db.database import Base
 from app.models import contact
+from app.core.config import settings
 
 config = context.config
 
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
+
+# Заміна URL на DATABASE_URL з config.py
+config.set_main_option("sqlalchemy.url", str(settings.DATABASE_URL))
 
 target_metadata = Base.metadata
 
