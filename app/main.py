@@ -7,3 +7,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Contacts API")
 
 app.include_router(contacts.router)
+
+@app.get("/")
+def read_root():
+    return {"message": "Server is running!"}
