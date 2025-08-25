@@ -14,5 +14,20 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  redis:
+    image: redis:7
+    container_name: contacts-redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: contacts-mailhog
+    restart: always
+    ports:
+      - "1025:1025"   
+      - "8025:8025"   
+
 volumes:
   postgres_data:
