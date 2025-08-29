@@ -15,7 +15,16 @@ conf = ConnectionConfig(
     VALIDATE_CERTS=True
 )
 
+
 async def send_email(email: EmailStr, subject: str, body: str):
+    """
+    Send an email with HTML content.
+
+    Args:
+        email (EmailStr): Recipient email address.
+        subject (str): Subject of the email.
+        body (str): HTML body content of the email.
+    """
     message = MessageSchema(
         subject=subject,
         recipients=[email],
